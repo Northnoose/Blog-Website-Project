@@ -1,0 +1,21 @@
+# Ignorer virtuelle miljø-mapper
+.venv/
+
+# Ignorer kompilerte Python-filer
+*.pyc
+__pycache__/
+
+# Ignorer Flask instance-mappe
+instance/
+
+# Ignorer pytest cache
+.pytest_cache/
+
+# Ignorer coverage rapporter
+.coverage
+htmlcov/
+
+# Ignorer byggeprodukter
+dist/
+build/
+*.egg-info/

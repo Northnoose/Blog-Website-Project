@@ -1,0 +1,22 @@
+{# Utvider basetemplaten for å gjenbruke strukturen #}
+{% extends 'base.html' %}
+
+{# Definerer en egen header for denne siden #}
+{% block header %}
+  <h1>{% block title %}New Post{% endblock %}</h1>
+{% endblock %}
+
+{# Hovedinnholdet på 'Ny post'-siden #}
+{% block content %}
+  {# Starter et skjema som sender data med POST-metoden #}
+  <form method="post">
+    {# Felt for å angi tittelen på posten #}
+    <label for="title">Title</label>
+    <input name="title" id="title" value="{{ request.form['title'] }}" required>
+    {# Felt for å skrive innholdet i posten #}
+    <label for="body">Body</label>
+    <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
+    {# Sendeknapp for skjemaet #}
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}

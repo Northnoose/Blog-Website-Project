@@ -1,0 +1,24 @@
+{# Utvider basetemplaten for å gjenbruke struktur og stil #}
+{% extends 'base.html' %}
+
+{# Definerer sidehodet for innloggingssiden #}
+{% block header %}
+  <h1>{% block title %}Log In{% endblock %}</h1>
+{% endblock %}
+
+{# Hovedinnholdet for innloggingssiden #}
+{% block content %}
+  {# Oppretter et skjema som sender data via POST-metoden #}
+  <form method="post">
+    {# Felt for brukernavn med tilhørende etikett. Feltet er påkrevd for å sende skjemaet. #}
+    <label for="username">Username</label>
+    <input name="username" id="username" required>
+    
+    {# Felt for passord med tilhørende etikett. Passordfeltet skjuler innholdet for økt sikkerhet. #}
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" required>
+    
+    {# Sendeknapp for skjemaet med teksten "Log In" #}
+    <input type="submit" value="Log In">
+  </form>
+{% endblock %}

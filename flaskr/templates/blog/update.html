@@ -1,0 +1,31 @@
+{# Utvider basetemplaten for å gjenbruke struktur og stil #}
+{% extends 'base.html' %}
+
+{# Definerer sidehodet med en dynamisk tittel basert på den posten som redigeres #}
+{% block header %}
+  <h1>{% block title %}Edit "{{ post['title'] }}"{% endblock %}</h1>
+{% endblock %}
+
+{# Hovedinnholdet for redigering av en post #}
+{% block content %}
+  {# Skjema for å redigere en eksisterende post #}
+  <form method="post">
+    {# Felt for tittel med forhåndsutfylt verdi fra den eksisterende posten/innsendt skjema #}
+    <label for="title">Title</label>
+    <input name="title" id="title"
+      value="{{ request.form['title'] or post['title'] }}" required>
+      
+    {# Felt for innhold med forhåndsutfylt verdi som ovenfor #}
+    <label for="body">Body</label>
+    <textarea name="body" id="body">{{ request.form['body'] or post['body'] }}</textarea>
+    
+    {# Knapp for å lagre endringene #}
+    <input type="submit" value="Save">
+  </form>
+  <hr>
+  
+  {# Et annet skjema for å slette posten. Krever bekreftelse før sletting. #}
+  <form action="{{ url_for('blog.delete', id=post['id']) }}" method="post">
+    <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+  </form>
+{% endblock %}

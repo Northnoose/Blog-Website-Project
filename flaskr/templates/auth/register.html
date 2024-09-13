@@ -1,0 +1,24 @@
+{# Utvider basetemplaten for å gjenbruke struktur og stil #}
+{% extends 'base.html' %}
+
+{# Setter tittelen i sidehodet til "Register" #}
+{% block header %}
+  <h1>{% block title %}Register{% endblock %}</h1>
+{% endblock %}
+
+{# Definerer hovedinnholdet på registreringssiden #}
+{% block content %}
+  {# Oppretter et skjema som sender informasjon via POST-metoden #}
+  <form method="post">
+    {# Felt for brukernavn med tilhørende etikett #}
+    <label for="username">Username</label>
+    <input name="username" id="username" required>
+    
+    {# Felt for passord med tilhørende etikett. Bruker type="password" for å skjule passordteksten. #}
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" required>
+    
+    {# Sendeknapp for skjemaet med teksten "Register" #}
+    <input type="submit" value="Register">
+  </form>
+{% endblock %}
